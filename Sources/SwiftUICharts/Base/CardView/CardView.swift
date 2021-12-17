@@ -28,10 +28,10 @@ public struct CardView<Content: View>: View, ChartBase {
                     .fill(Color.white)
                     .shadow(color: Color(white: 0.9, opacity: 1), radius: 8)
             }
-            VStack (alignment: .leading) {
+
+            VStack(alignment: .leading) {
                 self.content()
             }
-            .clipShape(RoundedRectangle(cornerRadius: showShadow ? 20 : 0))
         }
     }
 }

@@ -12,8 +12,8 @@ struct BarChartCellShape: Shape, Animatable {
         let x = 0.0
         let y: CGFloat
         let width = rect.width
-        let height: CGFloat
         var cornerRadius: CGFloat = ceil(rect.width / 4.0)
+        var height: CGFloat = 0.0
         var path = Path()
 
         if value > 0.0 {
@@ -28,6 +28,10 @@ struct BarChartCellShape: Shape, Animatable {
         else {
             y = rect.height
             height = barYvector
+        }
+
+        if (cornerRadius * 2.0) > height {
+            height = cornerRadius * 2.0
         }
 
         path.addRoundedRect(in: CGRect(x: x, y: y, width: width, height: height),

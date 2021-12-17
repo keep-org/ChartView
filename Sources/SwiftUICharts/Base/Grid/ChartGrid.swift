@@ -3,7 +3,7 @@ import SwiftUI
 public struct ChartGrid<Content: View>: View, ChartBase {
     public var chartData = ChartData()
     let content: () -> Content
-    let numberOfHorizontalLines = 4
+    let numberOfHorizontalLines = 6
 
     @EnvironmentObject var data: ChartData
     @EnvironmentObject var style: ChartStyle

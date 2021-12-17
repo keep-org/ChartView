@@ -70,14 +70,16 @@ public struct BarChartRow: View {
 	/// - Returns: value as `Double` if chart has data
     func getCurrentValue(width: CGFloat) -> Double? {
         guard self.chartData.data.count > 0 else { return nil}
-            let index = max(0,min(self.chartData.data.count-1,Int(floor((self.touchLocation*width)/(width/CGFloat(self.chartData.data.count))))))
+            let index = max(0,
+                            min(self.chartData.data.count-1,
+                                Int(floor((self.touchLocation*width)/(width/CGFloat(self.chartData.data.count))))))
             return self.chartData.points[index]
         }
 }
 
 struct BarChartRow_Previews: PreviewProvider {
-    static let chartData = ChartData([6, 2, 5, 8, 6])
-    static let chartStyle = ChartStyle(backgroundColor: .white, foregroundColor: .orangeBright)
+    static let chartData = ChartData([6, 2, 5, -2, 8, 6])
+    static let chartStyle = ChartStyle(backgroundColor: .red, foregroundColor: .orangeBright)
     static var previews: some View {
         BarChartRow(chartData: chartData, style: chartStyle)
     }

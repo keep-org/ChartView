@@ -24,14 +24,15 @@ public struct BarChartCell: View {
 	/// Animated when first displayed, using the `firstDisplay` variable, with an increasing delay through the data set.
     public var body: some View {
         BarChartCellShape(value: didCellAppear ? value : 0.0)
-        .fill(gradientColor.linearGradient(from: .bottom, to: .top))        .onAppear {
-            self.didCellAppear = true
-        }
-        .onDisappear {
-            self.didCellAppear = false
-        }
-        .transition(.slide)
-        .animation(Animation.spring().delay(self.touchLocation < 0 || !didCellAppear ? Double(self.index) * 0.04 : 0))
+            .fill(gradientColor.linearGradient(from: .bottom, to: .top))
+            .onAppear {
+                self.didCellAppear = true
+            }
+            .onDisappear {
+                self.didCellAppear = false
+            }
+            .transition(.slide)
+            .animation(Animation.spring().delay(self.touchLocation < 0 || !didCellAppear ? Double(self.index) * 0.04 : 0))
     }
 }
 
@@ -50,7 +51,8 @@ struct BarChartCell_Previews: PreviewProvider {
                 BarChartCell(value: 1, gradientColor: ColorGradient.greenRed, touchLocation: CGFloat())
                 BarChartCell(value: 1, gradientColor: ColorGradient.whiteBlack, touchLocation: CGFloat())
                 BarChartCell(value: 1, gradientColor: ColorGradient(.purple), touchLocation: CGFloat())
-            }.environment(\.colorScheme, .dark)
+            }
+            .environment(\.colorScheme, .dark)
         }
     }
 }
